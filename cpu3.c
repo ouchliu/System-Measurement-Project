@@ -7,7 +7,8 @@ int main(int argc, char* argv[]) {
 	if (argc == 2) {
 		runs = atoi(argv[1]);
 	} else {
-		printf("Expecting run count\n");
+		printf("Please specify run count.\n");
+		return 0;
 	}
 
 	unsigned long long start, end;
@@ -25,7 +26,7 @@ int main(int argc, char* argv[]) {
 			return end-start;
 		} else {
 			//printf("Parent Process\n");
-			printf("%llu\n", diff);
+			//printf("%llu\n", diff);
 			clock_total = clock_total + diff;
 		}
 	}
