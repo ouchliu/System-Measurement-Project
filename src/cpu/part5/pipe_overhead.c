@@ -1,22 +1,25 @@
 #include <stdio.h>
+#include <unistd.h>
 #include "utils.h"
 #include "rdtscp.h"
 
 int main(int argc, char* argv[]) {
 	int runs = get_runs(argc, argv);
-	//printf("Runs: %i\n", runs);
 
-	unsigned long clock_total = 0;
+	int fd[2];
+	pipe(fd);
 
 	int i;
 	for (i = 0; i < runs; i++) {
-		unsigned long long start, end;
+		unsigned long long start, end, diff;
 		start = rdtsc();
+		write(fd[1], &start, sizeof(start));
+		read(fd[0], &start, sizeof(start));
 		end = rdtsc();
-		unsigned long long diff = end - start;
-		clock_total = clock_total + diff;
+		diff = end - start;
 		printf("%llu\n", diff);
 	}
 
-	//printf("AVG: %lu\n", clock_total/runs);
+	close(fd[0]);
+	close(fd[1]);
 }

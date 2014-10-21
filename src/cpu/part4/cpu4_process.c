@@ -5,7 +5,7 @@
 
 int main(int argc, char* argv[]) {
 	int runs = get_runs(argc, argv);
-	printf("Runs: %i\n", runs);
+	//printf("Runs: %i\n", runs);
 
 	unsigned long long clock_total = 0;
 
@@ -17,15 +17,14 @@ int main(int argc, char* argv[]) {
 		end = rdtsc();
 		unsigned long long diff = end - start;
 
-		if (pid == 0) {
-			//Child
-			return end-start;
-		} else {
-			//Parent
+		if (pid == 0) { //Child
+			return 0;
+		} else { //Parent
 			clock_total = clock_total + diff;
+			printf("%llu\n", diff);
 		}
 	}
 
-	printf("CLOCK_TOTAL: %llu\n", clock_total);
-	printf("AVG: %llu\n", clock_total/runs);
+	//printf("CLOCK_TOTAL: %llu\n", clock_total);
+	//printf("AVG: %llu\n", clock_total/runs);
 }
