@@ -1,32 +1,27 @@
 #include <unistd.h>
 #include <stdio.h>
+#include "utils.h"
 #include "rdtsc.h"
 
 int main(int argc, char* argv[]) {
-	int runs;
-	if (argc == 2) {
-		runs = atoi(argv[1]);
-	} else {
-		printf("Please specify run count.\n");
-		return 0;
-	}
+	int runs = get_runs(argc, argv);
+	printf("Runs: %i\n", runs);
 
-	unsigned long long start, end;
+	unsigned long long clock_total = 0;
 
 	int i;
-	unsigned long long clock_total = 0;
 	for (i = 0; i < runs; i++) {
+		unsigned long long start, end;
 		start = rdtsc();
 		pid_t pid = fork();
 		end = rdtsc();
 		unsigned long long diff = end - start;
 
 		if (pid == 0) {
-			//printf("Child Process\n");
+			//Child
 			return end-start;
 		} else {
-			//printf("Parent Process\n");
-			//printf("%llu\n", diff);
+			//Parent
 			clock_total = clock_total + diff;
 		}
 	}

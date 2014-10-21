@@ -1,16 +1,19 @@
 #include <stdio.h>
 #include <pthread.h>
+#include "utils.h"
 #include "rdtsc.h"
 
 void *func(void *threadid) {
 	pthread_exit(NULL);
 }
 
-int main() {
+int main(int argc, char* argv[]) {
+	int runs = get_runs(argc, argv);
+	printf("Runs: %i\n", runs);
+
 	unsigned long long clock_total = 0;
 
 	int j;
-	int runs = 1000;
 	for (j = 0; j < runs; j++) {
 		unsigned long long start, end;
 
@@ -21,7 +24,6 @@ int main() {
 		end = rdtsc();
 		unsigned long long diff = end - start;
 		clock_total = clock_total + diff;
-		printf("%lld\n", diff);
 	}
 
 	printf("AVG: %lld\n", clock_total/runs);
