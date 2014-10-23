@@ -9,25 +9,24 @@ void *func(void *threadid) {
 
 int main(int argc, char* argv[]) {
 	int runs = get_runs(argc, argv);
-	//printf("Runs: %i\n", runs);
 
 	unsigned long long clock_total = 0;
 
 	int j;
 	for (j = 0; j < runs; j++) {
-		unsigned long long start, end;
+		unsigned long long start, end, diff;
 
 		long i;
 		pthread_t t;
 		start = rdtsc();
 		int rc = pthread_create(&t, NULL, func, (void *)i);
 		end = rdtsc();
-		unsigned long long diff = end - start;
+		diff = end - start;
 		clock_total = clock_total + diff;
 
-		printf("%llu\n", diff);
+		//printf("%llu\n", diff);
 	}
 
-	//printf("AVG: %lld\n", clock_total/runs);
+	printf("AVG: %lld\n", clock_total/runs);
 	pthread_exit(NULL);
 }
