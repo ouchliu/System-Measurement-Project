@@ -1,4 +1,4 @@
-all: cpu1 cpu2 cpu4process cpu4thread cpu5 pipeoverhead
+all: cpu1 cpu2 cpu3 cpu4process cpu4thread cpu5 pipeoverhead
 
 
 cpu1:
@@ -13,6 +13,9 @@ cpu2:
 	gcc -Isrc/lib -w -o cpu2_5.out src/cpu/part2/pco5.c
 	gcc -Isrc/lib -w -o cpu2_6.out src/cpu/part2/pco6.c
 	gcc -Isrc/lib -w -o cpu2_7.out src/cpu/part2/pco7.c
+
+cpu3:
+	gcc -Isrc/lib -o cpu3.out src/cpu/part3/cpu3_fork.c
 
 cpu4process:
 	gcc -Isrc/lib -o cpu4process.out src/cpu/part4/cpu4_process.c
