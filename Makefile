@@ -25,6 +25,7 @@ cpu4thread:
 
 cpu5:
 	gcc -Isrc/lib -o cpu5.out src/cpu/part5/cpu5_simple.c
+	gcc -Isrc/lib -pthread -o cpu5thread.out src/cpu/part5/cpu5_simple_thread.c
 
 pipeoverhead:
 	gcc -Isrc/lib -o pipeoverhead.out src/cpu/part5/pipe_overhead.c
