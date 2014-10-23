@@ -16,12 +16,13 @@ volatile __attribute__ ((noinline)) void foo0 (a0, a1, a2, a3, a4) {
 int main(int argc, char* argv[]) {
     int loops = atoi(argv[1]);
     timestamp start, end;
-    start = rdtsc();
+
     volatile int i;
     for (i = 0; i < loops; ++i) {
-        foo0(0, 1, 2, 3, 4);
+        start = rdtsc();
+        foo0(0, 0, 0, 0, 0);
+        end = rdtsc();
+        printf("%llu\n", end-start);
     }
-    end = rdtsc();
-    printf ("delta t = %llu\n", end - start);
 }
 
