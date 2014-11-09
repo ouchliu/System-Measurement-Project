@@ -1,5 +1,6 @@
 all: cpu1 cpu2 cpu3 cpu4process cpu4thread cpu5 pipeoverhead
 
+mem: latency
 
 cpu1:
 	gcc -Isrc/lib -o cpu1.out src/cpu/part1/cpu1.c
@@ -29,6 +30,9 @@ cpu5:
 
 pipeoverhead:
 	gcc -Isrc/lib -o pipeoverhead.out src/cpu/part5/pipe_overhead.c
+
+latency:
+	gcc -o latency.out src/mem/part1/latency.c
 
 clean:
 	rm *.out
