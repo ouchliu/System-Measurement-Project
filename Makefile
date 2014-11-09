@@ -1,6 +1,6 @@
 all: cpu1 cpu2 cpu3 cpu4process cpu4thread cpu5 pipeoverhead
 
-mem: latency
+mem: latency bandwidth pagefault
 
 cpu1:
 	gcc -Isrc/lib -o cpu1.out src/cpu/part1/cpu1.c
@@ -32,7 +32,13 @@ pipeoverhead:
 	gcc -Isrc/lib -o pipeoverhead.out src/cpu/part5/pipe_overhead.c
 
 latency:
-	gcc -o latency.out src/mem/part1/latency.c
+	gcc -Isrc/lib -lm -o latency.out src/mem/part1/latency.c
+
+bandwidth:
+	gcc -Isrc/lib -o bandwidth.out src/mem/part2/bandwidth.c
+
+pagefault:
+	gcc -Isrc/lib -o pagefault.out src/mem/part3/pagefault.c
 
 clean:
 	rm *.out
