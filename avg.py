@@ -11,4 +11,3 @@ for line in fileinput.input():
 		pass
 
 print total/count
-print count
