@@ -20,7 +20,7 @@ int main(int argc, char* argv[]) {
 	size_t size = getFileSize(fd);
 
 	start = rdtsc();
-	void* mmappedData = mmap(NULL, 4096, PROT_READ, MAP_PRIVATE | MAP_POPULATE, fd, 0);
+	void* mmappedData = mmap(NULL, 4096, PROT_READ, MAP_PRIVATE, fd, 0);
 	end = rdtsc();
 	diff = end - start;
 	printf("%llu\n", diff);

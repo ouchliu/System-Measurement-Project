@@ -1,8 +1,8 @@
-all: mem latency_overhead
+all: mem
 
 cpu: cpu1 cpu2 cpu3 cpu4process cpu4thread cpu5 pipeoverhead
 
-mem: latency bandwidth pagefault
+mem: latency bandwidth pagefault latency_overhead pagefault_overhead
 
 misc: latency_overhead
 
@@ -52,6 +52,9 @@ bandwidth:
 
 pagefault:
 	gcc -Isrc/lib -o pagefault.out src/mem/part3/pagefault.c
+
+pagefault_overhead:
+	gcc -Isrc/lib -o pagefault_overhead.out src/mem/part3/pagefault_overhead.c
 
 clean:
 	rm *.out
