@@ -1,6 +1,10 @@
-all: cpu1 cpu2 cpu3 cpu4process cpu4thread cpu5 pipeoverhead
+all: mem latency_overhead
+
+cpu: cpu1 cpu2 cpu3 cpu4process cpu4thread cpu5 pipeoverhead
 
 mem: latency bandwidth pagefault
+
+misc: latency_overhead
 
 cpu1:
 	gcc -Isrc/lib -o cpu1.out src/cpu/part1/cpu1.c
@@ -32,7 +36,16 @@ pipeoverhead:
 	gcc -Isrc/lib -o pipeoverhead.out src/cpu/part5/pipe_overhead.c
 
 latency:
-	gcc -Isrc/lib -lm -o latency.out src/mem/part1/latency.c
+	gcc -Isrc/lib -lm -o latency8.out src/mem/part1/latency8.c
+	gcc -Isrc/lib -lm -o latency16.out src/mem/part1/latency16.c
+	gcc -Isrc/lib -lm -o latency32.out src/mem/part1/latency32.c
+	gcc -Isrc/lib -lm -o latency64.out src/mem/part1/latency64.c
+
+latency_overhead:
+	gcc -Isrc/lib -lm -o latency_overhead8.out src/mem/part1/latency_overhead8.c
+	gcc -Isrc/lib -lm -o latency_overhead16.out src/mem/part1/latency_overhead16.c
+	gcc -Isrc/lib -lm -o latency_overhead32.out src/mem/part1/latency_overhead32.c
+	gcc -Isrc/lib -lm -o latency_overhead64.out src/mem/part1/latency_overhead64.c
 
 bandwidth:
 	gcc -Isrc/lib -o bandwidth.out src/mem/part2/bandwidth.c
