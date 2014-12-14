@@ -20,21 +20,21 @@ int main(int argc , char *argv[])
     server.sin_addr.s_addr =inet_addr(argv[1]);
     server.sin_family = AF_INET;
     server.sin_port = htons( 8888 );
-    int i = 0;
-    tick ts, te; /* tick start, tick end */
     int sock;
-    char message[1000] , server_reply[2000];
-    //Create socket
+    char message[1000] , temp[2000];
+    // Create socket
     sock = socket(AF_INET , SOCK_STREAM , 0);
     if (sock == -1)
-    {
-        printf("Could not create socket");
-    }
+        printf("Error: fails to create socket");
     puts("Socket created");
+    tick ts, te;
+    // Compute setup time
     ts = gettick ();
     connect(sock , (struct sockaddr *)&server , sizeof(server));
     te = gettick ();
-    printf ("setup = %llu\n", te - ts);
+    printf ("Setup time = %llu\n", te - ts);
+    
+    //Same steps to compute rtt
     char c;
     for (int j = 0; j < 100; ++j) {
         ts = gettick();
@@ -43,6 +43,5 @@ int main(int argc , char *argv[])
         te = gettick();
         printf ("%llu\n", te - ts);
     }
-    i++;
     return 0;
 }

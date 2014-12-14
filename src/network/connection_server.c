@@ -26,7 +26,7 @@ int main(int argc , char *argv[])
     {
         printf("Could not create socket");
     }
-    //puts("Socket created");
+    puts("Socket created");
      
     //Prepare the sockaddr_in structure
     server.sin_family = AF_INET;
@@ -34,13 +34,12 @@ int main(int argc , char *argv[])
     server.sin_port = htons( 8888 );
      
     //Bind
-    if( bind(socket_desc,(struct sockaddr *)&server , sizeof(server)) < 0)
-    {
+    if(bind(socket_desc,(struct sockaddr *)&server , sizeof(server)) < 0) {
         //print the error message
-        perror("bind failed. Error");
+        perror("Error: fails to bind");
         return 1;
     }
-    //puts("bind done");
+    puts("Bind done");
      
     //Listen
     listen(socket_desc , 3);
@@ -55,7 +54,7 @@ int main(int argc , char *argv[])
     	client_sock = accept(socket_desc, (struct sockaddr *)&client, (socklen_t*)&c);
     	if (client_sock < 0)
     	{
-            perror("accept failed");
+            perror("Error: fails to accept");
             return 1;
     	}
         char c = 0;
@@ -66,9 +65,9 @@ int main(int argc , char *argv[])
         ts = gettick ();
         close (client_sock);
         te = gettick ();
-        printf ("teardown = %llu\n", te - ts);
-     }
-    //puts("Connection accepted");
+        printf ("Teardown time = %llu\n", te - ts);
+    }
+    puts("Connection accepted");
      
     return 0;
 }

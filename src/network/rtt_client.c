@@ -30,10 +30,10 @@ int main(int argc , char *argv[])
         printf("Error: fails to create socket");
     puts("Socket created");
     
+    // Compute RTT
     char c;
     tick ts, te;
     for (int j = 0; j < 100; ++j) {
-        // Compute RTT
         ts = gettick();
         send(sock, &c, sizeof(c), 0);
         recv(sock, &c, sizeof(c), 0);

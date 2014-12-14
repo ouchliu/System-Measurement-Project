@@ -33,13 +33,12 @@ int main(int argc , char *argv[])
     server.sin_port = htons( 8888 );
      
     //Bind
-    if(bind(socket_desc,(struct sockaddr *)&server , sizeof(server)) < 0)
-    {
+    if(bind(socket_desc,(struct sockaddr *)&server , sizeof(server)) < 0) {
         //print the error message
         perror("Error: fails to bind");
         return 1;
     }
-    puts("bind done");
+    puts("Bind done");
      
     //Listen
     listen(socket_desc , 3);
