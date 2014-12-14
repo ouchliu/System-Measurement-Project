@@ -16,7 +16,7 @@ size_t getFileSize(int fd) {
 int main(int argc, char* argv[]) {
 	unsigned long long start, end, diff;
 
-	int fd = open("foo.txt", O_RDONLY);
+	int fd = open("/tmp/file_list.csv", O_RDONLY);
 	size_t size = getFileSize(fd);
 
 	start = rdtsc();
