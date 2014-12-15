@@ -3,6 +3,10 @@ System-Measurement-Project
 
 UCSD CSE 221 Project
 
+CPU, Scheduling, and OS Services
+
+Memory
+
 Network
 
 1. Round trip time. Compare with the time to perform a ping (ICMP requests are handled at kernel level).
@@ -16,3 +20,5 @@ Network
 3. Connection overhead: Report setup and tear-down.
 
   connection_client.c and connection_server.c are the two fils used to evaluate setup and tear-down time.
+
+File System
