@@ -45,6 +45,7 @@ int main(int argc, char* argv[]) {
 
 	int i;
 	for (i = 0; i < runs; i++) {
+		blockSize = 1048576;
 		start = rdtsc();
 		read(fd, buf, blockSize);
 		end = rdtsc();

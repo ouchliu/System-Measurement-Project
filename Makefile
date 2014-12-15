@@ -4,7 +4,7 @@ cpu: cpu1 cpu2 cpu3 cpu4process cpu4thread cpu5 pipeoverhead
 
 mem: latency bandwidth pagefault latency_overhead pagefault_overhead
 
-fs: file_cache file_read
+fs: file_cache file_read contention
 
 misc: latency_overhead
 
@@ -64,6 +64,9 @@ file_cache:
 file_read:
 	gcc -Isrc/lib -o file_read_seq.out src/fs/part2/file_read_seq.c
 	gcc -Isrc/lib -o file_read_random.out src/fs/part2/file_read_random.c
+
+contention:
+	gcc -Isrc/lib -o contention.out src/fs/part4/contention.c
 
 clean:
 	rm *.out

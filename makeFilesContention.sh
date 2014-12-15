@@ -1,0 +1,9 @@
+dd if=/dev/urandom of=$1/foobaz1 oflag=direct bs=1M count=20
+dd if=/dev/urandom of=$1/foobaz2 oflag=direct bs=1M count=20
+dd if=/dev/urandom of=$1/foobaz3 oflag=direct bs=1M count=20
+dd if=/dev/urandom of=$1/foobaz4 oflag=direct bs=1M count=20
+dd if=/dev/urandom of=$1/foobaz5 oflag=direct bs=1M count=20
+dd if=/dev/urandom of=$1/foobaz6 oflag=direct bs=1M count=20
+dd if=/dev/urandom of=$1/foobaz7 oflag=direct bs=1M count=20
+dd if=/dev/urandom of=$1/foobaz8 oflag=direct bs=1M count=20
+dd if=/dev/urandom of=$1/foobaz9 oflag=direct bs=1M count=20
