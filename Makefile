@@ -1,8 +1,10 @@
-all: mem
+all: fs
 
 cpu: cpu1 cpu2 cpu3 cpu4process cpu4thread cpu5 pipeoverhead
 
 mem: latency bandwidth pagefault latency_overhead pagefault_overhead
+
+fs: file_cache file_read
 
 misc: latency_overhead
 
@@ -55,6 +57,13 @@ pagefault:
 
 pagefault_overhead:
 	gcc -Isrc/lib -o pagefault_overhead.out src/mem/part3/pagefault_overhead.c
+
+file_cache:
+	gcc -Isrc/lib -o file_cache.out src/fs/part1/file_cache.c
+
+file_read:
+	gcc -Isrc/lib -o file_read_seq.out src/fs/part2/file_read_seq.c
+	gcc -Isrc/lib -o file_read_random.out src/fs/part2/file_read_random.c
 
 clean:
 	rm *.out
