@@ -18,7 +18,7 @@ How to run CPU
 - Measurement overhead: './cpu1.out <# of runs> | ./avg.py'
 - Procedure overhead: './cpu2_<# of arugments>.out <# of runs> | ./avg.py'
 - Syscall overhead: './cpu3.out <# of runs> | ./avg.py'
-- Process creation: './cpu4procses.out'
+- Process creation: './cpu4process.out'
 - Thread overhead: './cpu4thread.out'
 - Process context switch: './cpu5.out <# of runs> | ./avg.py'
 - Process context switch: './cpu5thread.out <# of runs> | ./avg.py'
@@ -32,7 +32,7 @@ How to run MEM
 - Pagefault: './pagefault.sh'
   - value above segfault is page fault in cycles.
 
-How to run File cache experiemnt
+How to run file cache experiemnt
 ---------------------
 1. First run 'make fs'
 2. For file cache experiment, generate input files with 'makeFiles.sh /tmp'
