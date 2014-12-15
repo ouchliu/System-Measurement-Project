@@ -52,8 +52,7 @@ How to run file contention experiment
 2. './makeFilesContention.sh /tmp' to create files in /tmp dir.
 3. './contention.out <# of processes> | ./avg.py' to get result.
 
-
-Network
+How to run Network
 -------
 1. Round trip time. Compare with the time to perform a ping (ICMP requests are handled at kernel level).
 
@@ -72,5 +71,3 @@ Network
   connection_client.c: argv[1] would be the IP address of the server.
   
   connection_server.c: No arguments needed.
-
-File System
