@@ -54,7 +54,7 @@ How to run file contention experiment
 
 
 Network
-
+-------
 1. Round trip time. Compare with the time to perform a ping (ICMP requests are handled at kernel level).
 
   rtt_client.c: argv[1] would be the IP address of the server.
