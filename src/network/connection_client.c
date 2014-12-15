@@ -8,6 +8,7 @@
 #include <linux/socket.h>
 
 typedef unsigned long long tick;
+
 static __inline__ tick gettick (void) {
     unsigned a, d;
     __asm__ __volatile__("rdtsc": "=a" (a), "=d" (d) );
@@ -17,9 +18,12 @@ static __inline__ tick gettick (void) {
 int main(int argc , char *argv[])
 {        
     struct sockaddr_in server;
+    
+    //Prepare sockaddr_in structure
     server.sin_addr.s_addr =inet_addr(argv[1]);
     server.sin_family = AF_INET;
     server.sin_port = htons( 8888 );
+    
     int sock;
     char message[1000] , temp[2000];
     // Create socket

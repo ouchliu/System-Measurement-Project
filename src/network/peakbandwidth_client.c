@@ -1,14 +1,13 @@
-#include<stdio.h>
-#include<string.h>
-#include<unistd.h>
-#include<sys/socket.h> 
-#include<arpa/inet.h>
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/socket.h>
+#include <arpa/inet.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 
 #define BLOCK_SIZE 1460000
 typedef unsigned long long tick;
-
 
 static __inline__ tick gettick (void) {
     unsigned a, d;
@@ -20,12 +19,12 @@ int main(int argc , char *argv[])
 {        
     struct sockaddr_in server;
     
-    //Prepare the sockaddr_in structure
+    //Prepare sockaddr_in structure
     server.sin_addr.s_addr =inet_addr(argv[1]);
     server.sin_family = AF_INET;
     server.sin_port = htons( 8888 );
     
-    tick ts, te, dur; /* tick start, tick end */
+    tick ts, te, dur;
     int sock; ssize_t bytes; ssize_t readsize;
     long long i = 1;
     char buf[BLOCK_SIZE];
@@ -33,10 +32,8 @@ int main(int argc , char *argv[])
     //Create socket
     sock = socket(AF_INET , SOCK_STREAM , 0);
     if (sock == -1)
-    {
-        printf("Could not create socket");
-    }
-    // puts("Socket created");
+        printf("Error: fails to create socket");
+    puts("Socket created");
     
     tick tss = gettick();
     ts = gettick();
