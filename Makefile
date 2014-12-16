@@ -5,12 +5,14 @@ cpu: cpu1 cpu2 cpu3 cpu4process cpu4thread cpu5 pipeoverhead
 mem: latency bandwidth pagefault latency_overhead pagefault_overhead
 
 network:
-	gcc -std=c99 src/network/rtt_client.c -o rtt_client.out
-	gcc -std=c99 src/network/rtt_server.c -o rtt_server.out
+	gcc src/network/server.c -o server.out
+	gcc src/network/rtt_client2.c -o rtt_client.out
+	#gcc -std=c99 src/network/rtt_client.c -o rtt_client.out
+	#gcc -std=c99 src/network/rtt_server.c -o rtt_server.out
 	gcc -std=c99 src/network/peakbandwidth_client.c -o peakbandwidth_client.out
 	gcc -std=c99 src/network/peakbandwidth_server.c -o peakbandwidth_server.out
-	gcc -std=c99 src/network/connection_client.c -o connection_client.out
-	gcc -std=c99 src/network/connection_server.c -o connection_server.out
+	gcc -std=c99 src/network/connection_client2.c -o connection_client.out
+	#gcc -std=c99 src/network/connection_server.c -o connection_server.out
 
 fs: file_cache file_read contention
 
