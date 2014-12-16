@@ -4,8 +4,10 @@ System-Measurement-Project
 UCSD CSE 221 Project
 
 You can compile some of the code with the make file.
+- 'make' will compile everything.
 - 'make cpu' will compile cpu code.
 - 'make mem' will compile mem code.
+- 'make network' will compile network code.
 - 'make fs' will compile fs code.
 
 Many experiments return an instance of measured time to standard out.
@@ -30,13 +32,14 @@ How to run MEM
   - first value is latency in cycles.
 - RAM Bandwidth: './bandwidth.out <size in MB>'
 - Pagefault: './pagefault.sh'
-  - value above segfault is page fault in cycles.
+  - value on last line is page fault in cycles.
 
 How to run file cache experiemnt
 ---------------------
 1. First run 'make fs'
 2. For file cache experiment, generate input files with 'makeFiles.sh /tmp'
-3. File cache: './file_cache.sh'
+  - This will create a few GB of files in /tmp dir. This may take a while.
+3. Run './file_cache.sh'
 
 How to run file read experiment
 -------------------------------
@@ -52,22 +55,23 @@ How to run file contention experiment
 2. './makeFilesContention.sh /tmp' to create files in /tmp dir.
 3. './contention.out <# of processes> | ./avg.py' to get result.
 
-How to run Network
--------
-1. Round trip time. Compare with the time to perform a ping (ICMP requests are handled at kernel level).
+How to run Network RTT
+----------------------
+1. 'make network'
+2. start server with './server.out'
+3. run 'rtt_client.out <server ip address> | ./avg.py'
 
-  rtt_client.c: argv[1] would be the IP address of the server.
-  
-  rtt_server.c: No arguments needed.
-  
-2. Peak bandwidth. 
+How to run network Bandwidth experiment
+---------------------------------------
+1. 'make network'
+2. start server with './peakbandwidth_server.out'
+3. run 'peakbandwidth_client.out <server ip address>'
 
-  peakbandwidth_client.c: argv[1] would be the IP address of the server.
-  
-  peakbandwidth_server.c: No arguments needed.
-  
-3. Connection overhead: Report setup and tear-down.
+How to run network connection experiment
+----------------------------------------
+1. 'make network'
+2. start server with './server.out'
+3. run 'connection_client.out <server ip address>'
 
-  connection_client.c: argv[1] would be the IP address of the server.
-  
-  connection_server.c: No arguments needed.
+
+There are many old code not used by the experiments anymore. Consult the makefile to see what is compiled and used.
