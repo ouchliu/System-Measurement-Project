@@ -25,39 +25,29 @@ int main(int argc, char* argv[]) {
 		exit(1);
 	}
 
+	//Get file info
 	size_t size = getFileSize(fd);
 	blksize_t blockSize = getBlockSize(fd);
 	int nBlocks = size/blockSize;
 
+	//Allocate aligned buffer.
 	void* buf = malloc(size);
+	posix_memalign(&buf, 512, size);
 
-	posix_memalign(&buf, blockSize, blockSize);
 	unsigned long long start, end, diff;
-
-/*
-	start = rdtsc();
-	read(fd, buf, size);
-	end = rdtsc();
-	diff = end - start;
-	printf("BLOCKS: %d, FILESIZE: %zd\n", nBlocks, size);
-	printf("%llu\n", diff);
-	printf("%llu\n", diff/nBlocks);
-*/
-
 
 	int i;
 	for (i = 0; i < runs; i++) {
-		blockSize = 1048576;
+		//Read one block sequentially.
 		start = rdtsc();
 		read(fd, buf, blockSize);
 		end = rdtsc();
 	
 		diff = end - start;
-
 		printf("%llu\n", diff);
 	}
 
 	close(fd);
-//	free(buf);
+	free(buf);
 }
 

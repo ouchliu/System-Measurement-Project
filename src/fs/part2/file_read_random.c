@@ -19,31 +19,40 @@ int main(int argc, char* argv[]) {
 		exit(1);
 	}
 
+	//File descriptor
 	int fd = open(filename, O_RDONLY | O_DIRECT);
+	if (fd < 0) {
+		printf("File error!\n");
+		exit(1);
+	}
 
+	//Get file info
 	size_t size = getFileSize(fd);
 	blksize_t blockSize = getBlockSize(fd);
-
+	int nBlocks = size/blockSize;
+	
+	//Allocate buffer to write into.
 	void* buf = malloc(size);
-	posix_memalign(&buf, blockSize, blockSize);
+	posix_memalign(&buf, 512, size);
+
 	unsigned long long start, end, diff;
 
 	int i;
 	for (i = 0; i < runs; i++) {
-		long offset = random_at_most(size - blockSize);
+		//Select a random block.
+		long blockIndex = random_at_most(nBlocks);
 
+		//Calculate timei to read one block.
 		start = rdtsc();
-		off_t r = lseek(fd, offset, SEEK_SET);
+		off_t r = lseek(fd, blockIndex*blockSize, SEEK_SET);
 		read(fd, buf, blockSize);
 		end = rdtsc();
 	
 		diff = end - start;
-		//printf("%zd\n", r);
-		//printf("%zd\n", random_offset);
 		printf("%llu\n", diff);
 	}
 
 	close(fd);
-//	free(buf);
+	free(buf);
 }
 
