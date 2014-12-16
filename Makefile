@@ -1,4 +1,4 @@
-all: fs
+all: cpu mem network fs
 
 cpu: cpu1 cpu2 cpu3 cpu4process cpu4thread cpu5 pipeoverhead
 
