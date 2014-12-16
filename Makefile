@@ -39,8 +39,10 @@ cpu4thread:
 	gcc -Isrc/lib -o cpu4thread.out -pthread src/cpu/part4/cpu4_thread.c
 
 cpu5:
-	gcc -Isrc/lib -o cpu5.out src/cpu/part5/cpu5_simple.c
-	gcc -Isrc/lib -pthread -o cpu5thread.out src/cpu/part5/cpu5_simple_thread.c
+	#gcc -Isrc/lib -o cpu5.out src/cpu/part5/cpu5_simple.c
+	#gcc -Isrc/lib -pthread -o cpu5thread.out src/cpu/part5/cpu5_simple_thread.c
+	gcc -Isrc/lib -o cpu5.out src/cpu/part5/cpu5_redo_process2.c
+	gcc -Isrc/lib -pthread -o cpu5thread.out src/cpu/part5/cpu5_redo_thread.c
 
 pipeoverhead:
 	gcc -Isrc/lib -o pipeoverhead.out src/cpu/part5/pipe_overhead.c
