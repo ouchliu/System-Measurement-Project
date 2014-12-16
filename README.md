@@ -31,8 +31,9 @@ How to run MEM
 - RAM Latency: './latency64.out [size of array in bytes]'
   - first value is latency in cycles.
 - RAM Bandwidth: './bandwidth.out [size in MB]'
-- Pagefault: './pagefault.sh'
+- Pagefault: './pagefault.sh [input file to mmap]'
   - value on last line is page fault in cycles.
+  - input file must not already be in cache, or results will be too fast.
 
 How to run file cache experiemnt
 ---------------------
@@ -71,7 +72,7 @@ How to run network connection experiment
 ----------------------------------------
 1. 'make network'
 2. start server with './server.out'
-3. run 'connection_client.out [server ip address]'
+3. run 'connection_client.out [server ip address]' to get setup time. View the server terminal to see the teardown time.
 
 
 There are many old code not used by the experiments anymore. Consult the makefile to see what is compiled and used.
