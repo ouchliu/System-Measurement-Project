@@ -71,7 +71,7 @@ How to run network connection experiment
 ----------------------------------------
 1. 'make network'
 2. start server with './server.out'
-3. run 'connection_client.out <server ip address>'
+3. run 'connection_client.out [server ip address]'
 
 
 There are many old code not used by the experiments anymore. Consult the makefile to see what is compiled and used.
