@@ -43,7 +43,7 @@ int main(int argc , char *argv[])
     printf ("Setup time = %llu\n", te - ts);
     
     char c;
-    for (int j = 0; j < 1; ++j) {
+    for (int j = 0; j < 100; ++j) {
         send(sock, &c, sizeof(c), 0);
         recv(sock, &c, sizeof(c), 0);
     }
