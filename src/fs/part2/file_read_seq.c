@@ -30,6 +30,8 @@ int main(int argc, char* argv[]) {
 	int nBlocks = size/blockSize;
 
 	void* buf = malloc(size);
+
+	posix_memalign(&buf, blockSize, blockSize);
 	unsigned long long start, end, diff;
 
 /*
@@ -56,6 +58,6 @@ int main(int argc, char* argv[]) {
 	}
 
 	close(fd);
-	free(buf);
+//	free(buf);
 }
 

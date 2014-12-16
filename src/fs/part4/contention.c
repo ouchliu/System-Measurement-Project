@@ -21,6 +21,10 @@ int main(int argc, char* argv[]) {
 	files[3] = "/tmp/foobaz4";
 	files[4] = "/tmp/foobaz5";
 	files[5] = "/tmp/foobaz6";
+	files[6] = "/tmp/foobaz6";
+	files[7] = "/tmp/foobaz7";
+	files[8] = "/tmp/foobaz8";
+	files[9] = "/tmp/foobaz9";
 
 	char* filename;
 
@@ -45,6 +49,7 @@ int main(int argc, char* argv[]) {
 	blksize_t blockSize = getBlockSize(fd);
 	int nBlocks = size/blockSize;
 	void* buf = malloc(size);
+	posix_memalign(&buf, blockSize, blockSize);
 	unsigned long long start, end, diff;
 
 	posix_fadvise(fd, 0, size, POSIX_FADV_RANDOM);

@@ -25,6 +25,7 @@ int main(int argc, char* argv[]) {
 	blksize_t blockSize = getBlockSize(fd);
 
 	void* buf = malloc(size);
+	posix_memalign(&buf, blockSize, blockSize);
 	unsigned long long start, end, diff;
 
 	int i;
@@ -43,6 +44,6 @@ int main(int argc, char* argv[]) {
 	}
 
 	close(fd);
-	free(buf);
+//	free(buf);
 }
 
